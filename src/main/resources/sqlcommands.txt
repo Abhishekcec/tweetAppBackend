@@ -1,0 +1,31 @@
+create database FSEUSECASE;
+use FSEUSECASE;
+CREATE TABLE users(
+    firstName varchar(255) not null,
+    lastName varchar(255),
+    email varchar(255) not null,
+    loginId varchar(255) not null unique,
+   	password varchar(255) not null,
+   	contactNo char(10) not null,
+   	primary key(loginId)
+);
+
+create table usertweets(
+tweetId varchar(255),
+loginId varchar(255),
+tweetMsg varchar(255),
+tweetTag varchar(255),
+primary key(tweetId),
+FOREIGN KEY (loginId) REFERENCES users(loginId)
+);
+
+create table tweetLikes(
+tweetId varchar(255),
+loginId varchar(255),
+FOREIGN KEY (loginId) REFERENCES users(loginId)
+)
+
+create table tweetcomments(
+tweetId varchar(255),
+loginId varchar(255),
+)
